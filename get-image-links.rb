@@ -1,59 +1,23 @@
 require 'open-uri'
 require 'csv'
-require 'nokogiri'
-#require 'regexp'
 
-
-
-
-
-CSV.foreach("pages") do |row|
-
-    
-    
-
-    
-  
-
-    
-    #divs.each do |div|
-        #puts div.a
-        #puts div.link.name
-        # div.click
-        #puts b.url
-        #b.goto(link)
-    #end 
-    
- 
-    
-    
-    #divs[5].click
-    
-    #puts b.url
-    
-    #b.goto(link)
-    
-    #puts b.url
-    
-    #puts d.location
-    
-    #b.links.each do |link|
-     #   puts link.href
-    #end
-    
-
-    doc = Nokogiri::HTML(open(row[0]))
-    #links = doc.css('a')
-    #puts links
-    
-    #here we could log inconsistencies
-    if doc.text.include? "_o.jpg"
-        puts "String includes '_o.jpg'"
+CSV.foreach(ARGV[0]) do |row|
+    doc = open(row[0]).read    
+    if doc.include? '"o":{"displayUrl":"'
+        
+        
+        pre_match = doc.match(/"o":{"displayUrl":".*,"key":"o"/).to_s
+        
+        
+        puts pre_match.sub(/",".*url":"/, ",").sub('"o":{"displayUrl":"','').sub('","key":"o"','').gsub("\\",'').gsub('//','http://')
+        #match = pre_match.match(/c1\..*_o.jpg/).to_s.gsub('\\','')
+        
+        
+        #not_found = doc.match(
+        
+        
     end
     
-    
-    pre_match = doc.text.match(/_o.jpg".*_o.jpg"/).to_s
-    match = pre_match.match(/c1\..*_o.jpg/).to_s.gsub('\\','')
-    puts match
+
 end
 

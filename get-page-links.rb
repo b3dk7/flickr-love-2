@@ -6,12 +6,11 @@ require 'csv'
 links_list = []
 
 
-b = Watir::Browser.new :chrome
-#, headless: true
+b = Watir::Browser.new :chrome, headless: true
 
 
 
-CSV.foreach("lil-places") do |row|
+CSV.foreach("places-4.csv") do |row|
     link = 'https://www.flickr.com/search/?text='+row[0].gsub(' ','%20')
     
     
