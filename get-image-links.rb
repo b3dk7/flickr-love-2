@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'csv'
 
+
 CSV.foreach(ARGV[0]) do |row|
     doc = open(row[0]).read    
     if doc.include? '"o":{"displayUrl":"'
