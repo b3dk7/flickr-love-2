@@ -26,6 +26,11 @@ CSV.foreach(ARGV[0]) do |row|
                 f.puts File.basename(img) + ',' + tags
             }
             
+            open('visit-log.csv', 'a') { |f|
+                f.puts row[0]
+            }
+            
+            
         end
     rescue
     end
