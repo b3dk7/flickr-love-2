@@ -24,6 +24,7 @@ CSV.foreach(ARGV[0]) do |row|
             #not_found = doc.match(
             open('tags.csv', 'a') { |f|
                 f.puts File.basename(img) + ',' + tags
+                stdout.flush
             }
             
             
