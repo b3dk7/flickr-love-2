@@ -2,7 +2,7 @@ require 'open-uri'
 
 require 'csv'
 
-require 'nokogiri'
+#require 'nokogiri'
 
 
 $stdout.sync = true
