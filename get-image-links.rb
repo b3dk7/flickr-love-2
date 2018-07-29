@@ -4,6 +4,9 @@ require 'csv'
 
 require 'nokogiri'
 
+
+$stdout.sync = true
+
 CSV.foreach(ARGV[0]) do |row|
     begin
         doc = open(row[0]).read    
@@ -24,7 +27,7 @@ CSV.foreach(ARGV[0]) do |row|
             #not_found = doc.match(
             open('tags.csv', 'a') { |f|
                 f.puts File.basename(img) + ',' + tags
-                stdout.flush
+                #stdout.flush
             }
             
             
